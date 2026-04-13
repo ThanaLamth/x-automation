@@ -1,0 +1,706 @@
+{
+  "id": "_8426c5a1706742c897ce",
+  "userId": 0,
+  "name": "Auto X - Login Scroll Post RSS",
+  "description": "Auto login X, scroll explore 5 phút, đăng bài từ RSS feed",
+  "version": "1.0.0",
+  "script": {
+    "id": "_8426c5a1706742c897ce",
+    "name": "Auto X - Login Scroll Post RSS",
+    "description": "Auto login X, scroll explore 5 phút, đăng bài từ RSS feed",
+    "version": "1.0.0",
+    "flow": {
+      "nodes": [
+        {
+          "type": "input",
+          "data": {
+            "action": "Start",
+            "options": {},
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "a454b",
+          "label": "Start",
+          "position": {
+            "x": 1040,
+            "y": 208
+          },
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "style": {
+            "width": "80px",
+            "height": "80px",
+            "backgroundColor": "#36ad6a",
+            "color": "#fff",
+            "box-shadow": "rgb(59 178 85 / 38%) 0px 0px 12px",
+            "--vf-node-color": "#36ad6a",
+            "--vf-handle": "#62fcaf",
+            "border-radius": "50%"
+          },
+          "deletable": false,
+          "class": ""
+        },
+        {
+          "type": "custom-context-menu",
+          "data": {
+            "action": "ContextMenu",
+            "icon": "menu",
+            "options": {
+              "casePaths": {}
+            }
+          },
+          "events": {},
+          "id": "menu",
+          "label": "Context Menu",
+          "position": {
+            "x": 40,
+            "y": 306
+          },
+          "style": {
+            "padding": "10px 20px",
+            "backgroundColor": "#55b3e6",
+            "color": "#fff",
+            "box-shadow": "#83c3e6 0px 0px 12px",
+            "--vf-node-color": "#55b3e6",
+            "--vf-handle": "#62fcaf",
+            "border-width": "1px",
+            "border-style": "solid",
+            "border-color": "#55b3e6",
+            "border-radius": "3px"
+          },
+          "deletable": false,
+          "class": ""
+        },
+        {
+          "type": "helper",
+          "data": {
+            "action": "Variables",
+            "icon": "actionVariables",
+            "options": {
+              "variables": [
+                {
+                  "key": "X_USERNAME",
+                  "value": "your@email.com",
+                  "type": "text"
+                },
+                {
+                  "key": "X_PASSWORD",
+                  "value": "your_password",
+                  "type": "text"
+                },
+                {
+                  "key": "RSS_FEED",
+                  "value": "https://your-rss-feed.com",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "events": {},
+          "id": "variables",
+          "label": "Variables",
+          "position": {
+            "x": 50,
+            "y": 198
+          },
+          "style": {
+            "padding": "10px 20px",
+            "backgroundColor": "#f0a020",
+            "color": "#fff",
+            "box-shadow": "#f0a720 0px 0px 12px",
+            "--vf-node-color": "#f0a020",
+            "--vf-handle": "#62fcaf",
+            "border-width": "1px",
+            "border-style": "solid",
+            "border-color": "#f0a020",
+            "border-radius": "3px"
+          },
+          "deletable": false,
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionGoto",
+            "action": "Goto",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "url": "https://x.com/i/flow/login",
+              "timeoutWaitNavigation": "10",
+              "waitUntilEvent": "networkidle2"
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "62d20",
+          "position": {
+            "x": 660,
+            "y": 400
+          },
+          "label": "Go to URL",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionWait",
+            "action": "Wait",
+            "options": {
+              "disabled": false,
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "3"
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "5c619",
+          "position": {
+            "x": 660,
+            "y": 510
+          },
+          "label": "Wait 3s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionType",
+            "action": "Type",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "selectorBy": "selector",
+              "selectorType": "xpath",
+              "selector": "input[autocomplete=\"username\"]",
+              "text": "${X_USERNAME}",
+              "timeout": "10"
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "6561a",
+          "position": {
+            "x": 660,
+            "y": 620
+          },
+          "label": "Type",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionWait",
+            "action": "Wait",
+            "options": {
+              "disabled": false,
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "1"
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "1a72f",
+          "position": {
+            "x": 660,
+            "y": 730
+          },
+          "label": "Wait 1s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionClick",
+            "action": "Click",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "buttonType": "left",
+              "selectorBy": "selector",
+              "selectorType": "xpath",
+              "selector": "//div[@role=\"button\" and contains(text(),\"Next\")]",
+              "x": "0",
+              "y": "0",
+              "timeout": "10",
+              "clickCount": 1
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "72960",
+          "position": {
+            "x": 660,
+            "y": 840
+          },
+          "label": "Click",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionWait",
+            "action": "Wait",
+            "options": {
+              "disabled": false,
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "2"
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "0ac67",
+          "position": {
+            "x": 660,
+            "y": 950
+          },
+          "label": "Wait 2s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionType",
+            "action": "Type",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "selectorBy": "selector",
+              "selectorType": "xpath",
+              "selector": "input[type=\"password\"]",
+              "text": "${X_PASSWORD}",
+              "timeout": "10"
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "55443",
+          "position": {
+            "x": 660,
+            "y": 1060
+          },
+          "label": "Type",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionClick",
+            "action": "Click",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "buttonType": "left",
+              "selectorBy": "selector",
+              "selectorType": "xpath",
+              "selector": "//div[@role=\"button\" and contains(text(),\"Log in\")]",
+              "x": "0",
+              "y": "0",
+              "timeout": "10",
+              "clickCount": 1
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "afb02",
+          "position": {
+            "x": 660,
+            "y": 1170
+          },
+          "label": "Click",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionWait",
+            "action": "Wait",
+            "options": {
+              "disabled": false,
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "5"
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "e9665",
+          "position": {
+            "x": 660,
+            "y": 1280
+          },
+          "label": "Wait 5s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionScript",
+            "action": "Script",
+            "options": {
+              "disabled": false,
+              "nodeTimeout": "60",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "code": "\n// Scroll explore 5 phút\nconst endTime = Date.now() + 5 * 60 * 1000;\nwhile (Date.now() < endTime) {\n    await page.evaluate(() => window.scrollBy(0, window.innerHeight));\n    await new Promise(r => setTimeout(r, 2000 + Math.random() * 3000));\n    if (Math.random() < 0.3) {\n        const like = await page.$('[data-testid=\"like\"]');\n        if (like) { await like.click(); await new Promise(r => setTimeout(r, 1000)); }\n    }\n}\n"
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "0cae9",
+          "position": {
+            "x": 660,
+            "y": 1390
+          },
+          "label": "Run Script",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionScript",
+            "action": "Script",
+            "options": {
+              "disabled": false,
+              "nodeTimeout": "60",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "code": "\n// Parse RSS feed và đăng bài\nconst rssUrl = '${RSS_FEED}';\nconst res = await fetch(rssUrl);\nconst text = await res.text();\nconst items = [];\nconst matches = text.match(/<item>[\\s\\S]*?<\\/item>/g) || [];\nfor (const item of matches) {\n    const title = item.match(/<title>(.*?)<\\/title>/)?.[1] || '';\n    const link = item.match(/<link>(.*?)<\\/link>/)?.[1] || '';\n    if (title && link) items.push({ title, link });\n}\n\nfor (const item of items) {\n    console.log('Posting: ' + item.title);\n    await page.goto('https://x.com/compose/post', { waitUntil: 'networkidle2' });\n    await new Promise(r => setTimeout(r, 2000));\n    \n    let tweet = item.title + '\\n\\n' + item.link;\n    if (tweet.length > 280) tweet = tweet.substring(0, 277) + '...';\n    \n    const ta = await page.$('[data-testid=\"tweetTextarea_0\"]');\n    if (ta) {\n        await ta.click();\n        await page.keyboard.type(tweet, { delay: 30 });\n        await new Promise(r => setTimeout(r, 2000));\n        const btn = await page.$('[data-testid=\"tweetButtonInline\"]');\n        if (btn) { await btn.click(); console.log('Posted: ' + item.title); }\n    }\n    await new Promise(r => setTimeout(r, (5 + Math.random() * 10) * 60 * 1000));\n}\n"
+            },
+            "successNode": null,
+            "failNode": null
+          },
+          "events": {},
+          "id": "7da43",
+          "position": {
+            "x": 660,
+            "y": 1500
+          },
+          "label": "Run Script",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        }
+      ],
+      "edges": [
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "a454b",
+          "target": "62d20",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-a454b target-62d20",
+          "id": "vueflow__edge-a454bsuccessNode-62d20successNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "62d20",
+          "target": "5c619",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-62d20 target-5c619",
+          "id": "vueflow__edge-62d20successNode-5c619successNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "5c619",
+          "target": "6561a",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-5c619 target-6561a",
+          "id": "vueflow__edge-5c619successNode-6561asuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "6561a",
+          "target": "1a72f",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-6561a target-1a72f",
+          "id": "vueflow__edge-6561asuccessNode-1a72fsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "1a72f",
+          "target": "72960",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-1a72f target-72960",
+          "id": "vueflow__edge-1a72fsuccessNode-72960successNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "72960",
+          "target": "0ac67",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-72960 target-0ac67",
+          "id": "vueflow__edge-72960successNode-0ac67successNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "0ac67",
+          "target": "55443",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-0ac67 target-55443",
+          "id": "vueflow__edge-0ac67successNode-55443successNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "55443",
+          "target": "afb02",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-55443 target-afb02",
+          "id": "vueflow__edge-55443successNode-afb02successNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "afb02",
+          "target": "e9665",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-afb02 target-e9665",
+          "id": "vueflow__edge-afb02successNode-e9665successNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "e9665",
+          "target": "0cae9",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-e9665 target-0cae9",
+          "id": "vueflow__edge-e9665successNode-0cae9successNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "0cae9",
+          "target": "7da43",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-0cae9 target-7da43",
+          "id": "vueflow__edge-0cae9successNode-7da43successNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        }
+      ]
+    }
+  }
+}
