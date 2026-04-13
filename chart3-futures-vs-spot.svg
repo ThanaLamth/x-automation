@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect fill="#0a0a0f" width="800" height="400" rx="12"/>
+  <text x="400" y="40" fill="#fff" font-size="22" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">RAVE: Futures vs Spot Volume</text>
+  <text x="400" y="65" fill="#8888a0" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">21:1 ratio — mechanically driven rally, not organic demand</text>
+  <!-- Y axis -->
+  <line x1="120" y1="90" x2="120" y2="330" stroke="#2a2a3e" stroke-width="1"/>
+  <!-- X axis -->
+  <line x1="120" y1="330" x2="720" y2="330" stroke="#2a2a3e" stroke-width="1"/>
+  <!-- Grid -->
+  <line x1="120" y1="150" x2="720" y2="150" stroke="#1a1a2e" stroke-width="0.5" stroke-dasharray="5,5"/>
+  <line x1="120" y1="210" x2="720" y2="210" stroke="#1a1a2e" stroke-width="0.5" stroke-dasharray="5,5"/>
+  <line x1="120" y1="270" x2="720" y2="270" stroke="#1a1a2e" stroke-width="0.5" stroke-dasharray="5,5"/>
+  <!-- Y labels -->
+  <text x="110" y="95" fill="#8888a0" font-size="11" text-anchor="end" font-family="Inter,sans-serif">$300M</text>
+  <text x="110" y="155" fill="#8888a0" font-size="11" text-anchor="end" font-family="Inter,sans-serif">$200M</text>
+  <text x="110" y="215" fill="#8888a0" font-size="11" text-anchor="end" font-family="Inter,sans-serif">$100M</text>
+  <text x="110" y="335" fill="#8888a0" font-size="11" text-anchor="end" font-family="Inter,sans-serif">$0</text>
+  <!-- Futures bar -->
+  <rect x="200" y="95" width="100" height="235" fill="url(#g1)" rx="6"/>
+  <text x="250" y="85" fill="#e94560" font-size="16" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">$276.7M</text>
+  <text x="250" y="355" fill="#e94560" font-size="13" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">Futures</text>
+  <!-- Spot bar -->
+  <rect x="380" y="310" width="100" height="20" fill="url(#g2)" rx="6"/>
+  <text x="430" y="305" fill="#00c853" font-size="14" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">$13M</text>
+  <text x="430" y="355" fill="#00c853" font-size="13" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">Spot</text>
+  <!-- Ratio annotation -->
+  <rect x="540" y="140" width="130" height="100" fill="#1a1a2e" stroke="#ffd600" stroke-width="2" rx="10"/>
+  <text x="605" y="175" fill="#ffd600" font-size="36" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">21:1</text>
+  <text x="605" y="200" fill="#fff" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">Futures/Spot</text>
+  <text x="605" y="220" fill="#ff1744" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">⚠️ SHORT SQUEEZE</text>
+  <!-- OI annotation -->
+  <rect x="540" y="260" width="130" height="60" fill="#1a1a2e" stroke="#0f3460" stroke-width="1" rx="8"/>
+  <text x="605" y="285" fill="#fff" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">Open Interest</text>
+  <text x="605" y="305" fill="#00c853" font-size="14" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">$46.7M (+29%)</text>
+  <!-- Source -->
+  <text x="400" y="390" fill="#555" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">Source: CoinStats AI, KuCoin Research — April 13, 2026</text>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e94560"/>
+      <stop offset="100%" stop-color="#c62828"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00c853"/>
+      <stop offset="100%" stop-color="#009624"/>
+    </linearGradient>
+  </defs>
+</svg>

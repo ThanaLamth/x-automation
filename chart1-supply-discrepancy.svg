@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e94560"/>
+      <stop offset="100%" stop-color="#c62828"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00c853"/>
+      <stop offset="100%" stop-color="#009624"/>
+    </linearGradient>
+  </defs>
+  <rect fill="#0a0a0f" width="800" height="400" rx="12"/>
+  <text x="400" y="45" fill="#fff" font-size="22" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">RAVE Circulating Supply: Reported vs On-Chain</text>
+  <text x="400" y="70" fill="#8888a0" font-size="13" text-anchor="middle" font-family="Inter,sans-serif">CoinMarketCap reports 24.8% — Etherscan shows 97.76%</text>
+  <!-- Grid lines -->
+  <line x1="100" y1="100" x2="100" y2="340" stroke="#2a2a3e" stroke-width="1"/>
+  <line x1="100" y1="340" x2="700" y2="340" stroke="#2a2a3e" stroke-width="1"/>
+  <!-- CMC Bar -->
+  <rect x="180" y="270" width="120" height="70" fill="url(#g1)" rx="6"/>
+  <text x="240" y="255" fill="#e94560" font-size="18" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">248M (24.8%)</text>
+  <text x="240" y="310" fill="#fff" font-size="14" text-anchor="middle" font-family="Inter,sans-serif">CoinMarketCap</text>
+  <!-- Etherscan Bar -->
+  <rect x="420" y="130" width="120" height="210" fill="url(#g2)" rx="6"/>
+  <text x="480" y="115" fill="#00c853" font-size="18" font-weight="bold" text-anchor="middle" font-family="Inter,sans-serif">977.6M (97.76%)</text>
+  <text x="480" y="310" fill="#fff" font-size="14" text-anchor="middle" font-family="Inter,sans-serif">Etherscan API</text>
+  <!-- Warning icon -->
+  <text x="580" y="200" fill="#ffd600" font-size="48" text-anchor="middle">⚠️</text>
+  <text x="580" y="240" fill="#ffd600" font-size="12" text-anchor="middle" font-family="Inter,sans-serif">4x discrepancy</text>
+  <!-- Source -->
+  <text x="400" y="385" fill="#555" font-size="10" text-anchor="middle" font-family="Inter,sans-serif">Source: CoinMarketCap, Etherscan API v2 — April 13, 2026</text>
+</svg>
