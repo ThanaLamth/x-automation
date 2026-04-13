@@ -1,42 +1,86 @@
 {
-  "id": "_rNgwZNi0YmpNyYvP7AJS",
+  "id": "_yoPhm6na4ShKoemrbWWx",
   "userId": 0,
-  "name": "Auto X - Login Scroll Post RSS",
-  "description": "Auto login X, scroll explore 5 phút, đăng bài từ RSS feed",
+  "name": "Auto X - Login Scroll Post",
+  "description": "Auto login X, scroll explore, like posts, compose and post tweet. Loop multiple times.",
   "version": "1.0.0",
   "script": {
-    "id": "_rNgwZNi0YmpNyYvP7AJS",
-    "name": "Auto X - Login Scroll Post RSS",
-    "description": "Auto login X, scroll explore 5 phút, đăng bài từ RSS feed",
+    "id": "_yoPhm6na4ShKoemrbWWx",
+    "name": "Auto X - Login Scroll Post",
+    "description": "Auto login X, scroll explore, like posts, compose and post tweet. Loop multiple times.",
     "version": "1.0.0",
     "flow": {
       "nodes": [
         {
-          "type": "input",
+          "type": "helper",
           "data": {
-            "action": "Start",
+            "action": "Variables",
+            "icon": "actionVariables",
             "options": {},
-            "successNode": null,
-            "failNode": null
+            "variables": [
+              {
+                "id": "vUser",
+                "name": "X_USERNAME",
+                "label": "X Username/Email",
+                "value": "your@email.com",
+                "secret": false
+              },
+              {
+                "id": "vPass",
+                "name": "X_PASSWORD",
+                "label": "X Password",
+                "value": "your_password",
+                "secret": true
+              },
+              {
+                "id": "vTweet",
+                "name": "TWEET_TEXT",
+                "label": "Tweet content",
+                "value": "Hello from GenLogin! #automation",
+                "secret": false
+              },
+              {
+                "id": "vCnt",
+                "name": "POST_COUNT",
+                "label": "Number of posts",
+                "value": "3",
+                "secret": false
+              },
+              {
+                "id": "vWait",
+                "name": "DELAY_MIN",
+                "label": "Delay between posts (seconds, from)",
+                "value": "300",
+                "secret": false
+              },
+              {
+                "id": "vWait2",
+                "name": "DELAY_MAX",
+                "label": "Delay between posts (seconds, to)",
+                "value": "900",
+                "secret": false
+              }
+            ],
+            "successNode": "GYjYa"
           },
           "events": {},
-          "id": "start_h5iGk",
-          "label": "Start",
+          "id": "variables",
+          "label": "Variables",
           "position": {
-            "x": 1040,
-            "y": 208
+            "x": 50,
+            "y": 198.55194935163752
           },
-          "sourcePosition": "right",
-          "targetPosition": "left",
           "style": {
-            "width": "80px",
-            "height": "80px",
-            "backgroundColor": "#36ad6a",
+            "padding": "10px 20px",
+            "backgroundColor": "#f0a020",
             "color": "#fff",
-            "box-shadow": "rgb(59 178 85 / 38%) 0px 0px 12px",
-            "--vf-node-color": "#36ad6a",
+            "box-shadow": "#f0a720 0px 0px 12px",
+            "--vf-node-color": "#f0a020",
             "--vf-handle": "#62fcaf",
-            "border-radius": "50%"
+            "border-width": "1px",
+            "border-style": "solid",
+            "border-color": "#f0a020",
+            "border-radius": "3px"
           },
           "deletable": false,
           "class": ""
@@ -73,69 +117,10 @@
           "class": ""
         },
         {
-          "type": "helper",
-          "data": {
-            "action": "Variables",
-            "icon": "actionVariables",
-            "options": {},
-            "variables": [
-              {
-                "id": "vXusr",
-                "name": "X_USERNAME",
-                "label": "X Username",
-                "value": "your@email.com",
-                "secret": false
-              },
-              {
-                "id": "vPass",
-                "name": "X_PASSWORD",
-                "label": "X Password",
-                "value": "your_password",
-                "secret": true
-              },
-              {
-                "id": "vRSS",
-                "name": "RSS_FEED",
-                "label": "RSS Feed URL",
-                "value": "https://your-rss-feed.com/rss",
-                "secret": false
-              },
-              {
-                "id": "vCnt",
-                "name": "MAX_POSTS",
-                "label": "Max posts to publish",
-                "value": "10",
-                "secret": false
-              }
-            ]
-          },
-          "events": {},
-          "id": "variables",
-          "label": "Variables",
-          "position": {
-            "x": 50,
-            "y": 198.55194935163752
-          },
-          "style": {
-            "padding": "10px 20px",
-            "backgroundColor": "#f0a020",
-            "color": "#fff",
-            "box-shadow": "#f0a720 0px 0px 12px",
-            "--vf-node-color": "#f0a020",
-            "--vf-handle": "#62fcaf",
-            "border-width": "1px",
-            "border-style": "solid",
-            "border-color": "#f0a020",
-            "border-radius": "3px"
-          },
-          "deletable": false,
-          "class": ""
-        },
-        {
           "type": "custom",
           "data": {
-            "icon": "actionGoto",
-            "action": "Goto",
+            "icon": "actionOpenUrl",
+            "action": "OpenUrl",
             "options": {
               "disabled": false,
               "nodeSleep": "2",
@@ -143,19 +128,19 @@
               "timeoutNextNode": "successNode",
               "breakpoint": false,
               "url": "https://x.com/i/flow/login",
-              "timeoutWaitNavigation": "10",
+              "timeoutWaitForNavigation": "10",
               "waitUntilEvent": "networkidle2"
             },
-            "successNode": null,
+            "successNode": "hqn1k",
             "failNode": null
           },
           "events": {},
-          "id": "7-eE4",
+          "id": "GYjYa",
           "position": {
             "x": 660,
             "y": 350
           },
-          "label": "Go to URL",
+          "label": "Open url",
           "sourcePosition": "right",
           "targetPosition": "left",
           "class": ""
@@ -167,21 +152,25 @@
             "action": "Pause",
             "options": {
               "disabled": false,
+              "nodeSleep": "0",
               "nodeTimeout": "30",
               "timeoutNextNode": "successNode",
               "breakpoint": false,
-              "timeout": "3"
+              "timeout": "5",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
             },
-            "successNode": null,
+            "successNode": "iDxYr",
             "failNode": null
           },
           "events": {},
-          "id": "f-FLO",
+          "id": "hqn1k",
           "position": {
             "x": 660,
             "y": 460
           },
-          "label": "Sleep 3s",
+          "label": "Sleep 5s",
           "sourcePosition": "right",
           "targetPosition": "left",
           "class": ""
@@ -200,14 +189,14 @@
               "text": "${X_USERNAME}",
               "selector": "input[autocomplete=\"username\"]",
               "selectorType": "css",
-              "typeSpeed": 1,
+              "typeSpeed": 50,
               "typeAsHuman": true
             },
-            "successNode": null,
+            "successNode": "BsNM7",
             "failNode": null
           },
           "events": {},
-          "id": "hPg6l",
+          "id": "iDxYr",
           "position": {
             "x": 660,
             "y": 570
@@ -220,59 +209,26 @@
         {
           "type": "custom",
           "data": {
-            "icon": "actionPause",
-            "action": "Pause",
-            "options": {
-              "disabled": false,
-              "nodeTimeout": "30",
-              "timeoutNextNode": "successNode",
-              "breakpoint": false,
-              "timeout": "1"
-            },
-            "successNode": null,
-            "failNode": null
-          },
-          "events": {},
-          "id": "hKlwV",
-          "position": {
-            "x": 660,
-            "y": 680
-          },
-          "label": "Sleep 1s",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "class": ""
-        },
-        {
-          "type": "custom",
-          "data": {
-            "icon": "actionClick",
-            "action": "Click",
+            "icon": "actionPress",
+            "action": "Press",
             "options": {
               "disabled": false,
               "nodeSleep": "2",
               "nodeTimeout": "30",
               "timeoutNextNode": "successNode",
               "breakpoint": false,
-              "buttonType": "left",
-              "selectorBy": "selector",
-              "selectorType": "xpath",
-              "selector": "//div[@role=\"button\" and contains(text(),\"Next\") or contains(text(),\"next\")]",
-              "x": "0",
-              "y": "0",
-              "timeout": "10",
-              "clickCount": 1
+              "key": "Enter"
             },
-            "successNode": null,
+            "successNode": "_jMDO",
             "failNode": null
           },
           "events": {},
-          "id": "rWfTp",
+          "id": "BsNM7",
           "position": {
             "x": 660,
-            "y": 790
+            "y": 680
           },
-          "label": "Click",
+          "label": "Press Enter",
           "sourcePosition": "right",
           "targetPosition": "left",
           "class": ""
@@ -284,21 +240,25 @@
             "action": "Pause",
             "options": {
               "disabled": false,
+              "nodeSleep": "0",
               "nodeTimeout": "30",
               "timeoutNextNode": "successNode",
               "breakpoint": false,
-              "timeout": "2"
+              "timeout": "3",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
             },
-            "successNode": null,
+            "successNode": "7tQqf",
             "failNode": null
           },
           "events": {},
-          "id": "gT3aE",
+          "id": "_jMDO",
           "position": {
             "x": 660,
-            "y": 900
+            "y": 790
           },
-          "label": "Sleep 2s",
+          "label": "Sleep 3s",
           "sourcePosition": "right",
           "targetPosition": "left",
           "class": ""
@@ -317,19 +277,306 @@
               "text": "${X_PASSWORD}",
               "selector": "input[type=\"password\"]",
               "selectorType": "css",
-              "typeSpeed": 1,
+              "typeSpeed": 50,
               "typeAsHuman": true
             },
-            "successNode": null,
+            "successNode": "v50mb",
             "failNode": null
           },
           "events": {},
-          "id": "c5mLn",
+          "id": "7tQqf",
+          "position": {
+            "x": 660,
+            "y": 900
+          },
+          "label": "Type text",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPress",
+            "action": "Press",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "key": "Enter"
+            },
+            "successNode": "ouWHX",
+            "failNode": null
+          },
+          "events": {},
+          "id": "v50mb",
           "position": {
             "x": 660,
             "y": 1010
           },
-          "label": "Type text",
+          "label": "Press Enter",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "5",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "QlxrA",
+            "failNode": null
+          },
+          "events": {},
+          "id": "ouWHX",
+          "position": {
+            "x": 660,
+            "y": 1120
+          },
+          "label": "Sleep 5s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionOpenUrl",
+            "action": "OpenUrl",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "url": "https://x.com/home",
+              "timeoutWaitForNavigation": "10",
+              "waitUntilEvent": "networkidle2"
+            },
+            "successNode": "k4y-D",
+            "failNode": null
+          },
+          "events": {},
+          "id": "QlxrA",
+          "position": {
+            "x": 660,
+            "y": 1230
+          },
+          "label": "Open url",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "3",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "7CDB4",
+            "failNode": null
+          },
+          "events": {},
+          "id": "k4y-D",
+          "position": {
+            "x": 660,
+            "y": 1340
+          },
+          "label": "Sleep 3s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPress",
+            "action": "Press",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "key": "Space"
+            },
+            "successNode": "vm8SB",
+            "failNode": null
+          },
+          "events": {},
+          "id": "7CDB4",
+          "position": {
+            "x": 660,
+            "y": 1450
+          },
+          "label": "Press Space",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "2",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "nd-nh",
+            "failNode": null
+          },
+          "events": {},
+          "id": "vm8SB",
+          "position": {
+            "x": 660,
+            "y": 1560
+          },
+          "label": "Sleep 2s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPress",
+            "action": "Press",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "key": "Space"
+            },
+            "successNode": "SjVgB",
+            "failNode": null
+          },
+          "events": {},
+          "id": "nd-nh",
+          "position": {
+            "x": 660,
+            "y": 1670
+          },
+          "label": "Press Space",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "2",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "fhnfo",
+            "failNode": null
+          },
+          "events": {},
+          "id": "SjVgB",
+          "position": {
+            "x": 660,
+            "y": 1780
+          },
+          "label": "Sleep 2s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPress",
+            "action": "Press",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "key": "Space"
+            },
+            "successNode": "NYToP",
+            "failNode": null
+          },
+          "events": {},
+          "id": "fhnfo",
+          "position": {
+            "x": 660,
+            "y": 1890
+          },
+          "label": "Press Space",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "2",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "AIN7j",
+            "failNode": null
+          },
+          "events": {},
+          "id": "NYToP",
+          "position": {
+            "x": 660,
+            "y": 2000
+          },
+          "label": "Sleep 2s",
           "sourcePosition": "right",
           "targetPosition": "left",
           "class": ""
@@ -348,20 +595,20 @@
               "buttonType": "left",
               "selectorBy": "selector",
               "selectorType": "xpath",
-              "selector": "//div[@role=\"button\" and contains(text(),\"Log in\") or contains(text(),\"log in\")]",
+              "selector": "//*[@data-testid=\"like\"]",
               "x": "0",
               "y": "0",
               "timeout": "10",
               "clickCount": 1
             },
-            "successNode": null,
+            "successNode": "lc_BF",
             "failNode": null
           },
           "events": {},
-          "id": "_JNqg",
+          "id": "AIN7j",
           "position": {
             "x": 660,
-            "y": 1120
+            "y": 2110
           },
           "label": "Click",
           "sourcePosition": "right",
@@ -375,19 +622,207 @@
             "action": "Pause",
             "options": {
               "disabled": false,
+              "nodeSleep": "0",
               "nodeTimeout": "30",
               "timeoutNextNode": "successNode",
               "breakpoint": false,
-              "timeout": "5"
+              "timeout": "2",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
             },
-            "successNode": null,
+            "successNode": "h6tde",
             "failNode": null
           },
           "events": {},
-          "id": "MZ4Lt",
+          "id": "lc_BF",
           "position": {
             "x": 660,
-            "y": 1230
+            "y": 2220
+          },
+          "label": "Sleep 2s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionOpenUrl",
+            "action": "OpenUrl",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "url": "https://x.com/compose/post",
+              "timeoutWaitForNavigation": "10",
+              "waitUntilEvent": "networkidle2"
+            },
+            "successNode": "IHmGh",
+            "failNode": null
+          },
+          "events": {},
+          "id": "h6tde",
+          "position": {
+            "x": 660,
+            "y": 2330
+          },
+          "label": "Open url",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "3",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "S0-Ne",
+            "failNode": null
+          },
+          "events": {},
+          "id": "IHmGh",
+          "position": {
+            "x": 660,
+            "y": 2440
+          },
+          "label": "Sleep 3s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionTypeText",
+            "action": "TypeText",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "text": "${TWEET_TEXT}",
+              "selector": "[data-testid=\"tweetTextarea_0\"]",
+              "selectorType": "css",
+              "typeSpeed": 50,
+              "typeAsHuman": true
+            },
+            "successNode": "Y9ZCH",
+            "failNode": null
+          },
+          "events": {},
+          "id": "S0-Ne",
+          "position": {
+            "x": 660,
+            "y": 2550
+          },
+          "label": "Type text",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "2",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "GhLSo",
+            "failNode": null
+          },
+          "events": {},
+          "id": "Y9ZCH",
+          "position": {
+            "x": 660,
+            "y": 2660
+          },
+          "label": "Sleep 2s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionClick",
+            "action": "Click",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "buttonType": "left",
+              "selectorBy": "selector",
+              "selectorType": "xpath",
+              "selector": "//*[@data-testid=\"tweetButtonInline\"]",
+              "x": "0",
+              "y": "0",
+              "timeout": "10",
+              "clickCount": 1
+            },
+            "successNode": "256-E",
+            "failNode": null
+          },
+          "events": {},
+          "id": "GhLSo",
+          "position": {
+            "x": 660,
+            "y": 2770
+          },
+          "label": "Click",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "5",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "2P_br",
+            "failNode": null
+          },
+          "events": {},
+          "id": "256-E",
+          "position": {
+            "x": 660,
+            "y": 2880
           },
           "label": "Sleep 5s",
           "sourcePosition": "right",
@@ -397,25 +832,28 @@
         {
           "type": "custom",
           "data": {
-            "icon": "actionScript",
-            "action": "Script",
+            "icon": "actionSetVariable",
+            "action": "SetVariable",
             "options": {
               "disabled": false,
-              "nodeTimeout": "120",
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
               "timeoutNextNode": "successNode",
               "breakpoint": false,
-              "code": "// Scroll explore in 5 minutes\nconst endTime = Date.now() + 5 * 60 * 1000;\nwhile (Date.now() < endTime) {\n    await page.evaluate(() => window.scrollBy(0, window.innerHeight));\n    await new Promise(r => setTimeout(r, 2000 + Math.random() * 3000));\n    if (Math.random() < 0.3) {\n        const like = await page.$('[data-testid=\"like\"]');\n        if (like) { await like.click(); await new Promise(r => setTimeout(r, 1000)); }\n    }\n}\n"
+              "variableName": "TWEET_TEXT",
+              "variableValue": "${TWEET_TEXT} (update)",
+              "setOperator": "Set"
             },
-            "successNode": null,
+            "successNode": "NqQzA",
             "failNode": null
           },
           "events": {},
-          "id": "2NsJt",
+          "id": "2P_br",
           "position": {
             "x": 660,
-            "y": 1340
+            "y": 2990
           },
-          "label": "Run Script",
+          "label": "Set variable",
           "sourcePosition": "right",
           "targetPosition": "left",
           "class": ""
@@ -423,25 +861,213 @@
         {
           "type": "custom",
           "data": {
-            "icon": "actionScript",
-            "action": "Script",
+            "icon": "actionOpenUrl",
+            "action": "OpenUrl",
             "options": {
               "disabled": false,
-              "nodeTimeout": "120",
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
               "timeoutNextNode": "successNode",
               "breakpoint": false,
-              "code": "\n// Read RSS feed and store items\nconst res = await fetch('${RSS_FEED}');\nconst text = await res.text();\nconst items = [];\nconst matches = text.match(/<item>[\\s\\S]*?<\\/item>/g) || [];\nfor (const item of matches) {\n    const title = (item.match(/<title>(.*?)<\\/title>/) || [])[1] || '';\n    const link = (item.match(/<link>(.*?)<\\/link>/) || [])[1] || '';\n    if (title && link) items.push({title, link});\n}\n// Store in variable\nglobalThis.rssItems = items;\nconsole.log('Found ' + items.length + ' RSS items');\n"
+              "url": "https://x.com/compose/post",
+              "timeoutWaitForNavigation": "10",
+              "waitUntilEvent": "networkidle2"
+            },
+            "successNode": "WCNDr",
+            "failNode": null
+          },
+          "events": {},
+          "id": "PnyOy",
+          "position": {
+            "x": 660,
+            "y": 3100
+          },
+          "label": "Open url",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "3",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "HHHRG",
+            "failNode": null
+          },
+          "events": {},
+          "id": "WCNDr",
+          "position": {
+            "x": 660,
+            "y": 3210
+          },
+          "label": "Sleep 3s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionTypeText",
+            "action": "TypeText",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "text": "${TWEET_TEXT}",
+              "selector": "[data-testid=\"tweetTextarea_0\"]",
+              "selectorType": "css",
+              "typeSpeed": 50,
+              "typeAsHuman": true
+            },
+            "successNode": "uFsQL",
+            "failNode": null
+          },
+          "events": {},
+          "id": "HHHRG",
+          "position": {
+            "x": 660,
+            "y": 3320
+          },
+          "label": "Type text",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "2",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "rcOwv",
+            "failNode": null
+          },
+          "events": {},
+          "id": "uFsQL",
+          "position": {
+            "x": 660,
+            "y": 3430
+          },
+          "label": "Sleep 2s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionClick",
+            "action": "Click",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "2",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "buttonType": "left",
+              "selectorBy": "selector",
+              "selectorType": "xpath",
+              "selector": "//*[@data-testid=\"tweetButtonInline\"]",
+              "x": "0",
+              "y": "0",
+              "timeout": "10",
+              "clickCount": 1
+            },
+            "successNode": "cwOwb",
+            "failNode": null
+          },
+          "events": {},
+          "id": "rcOwv",
+          "position": {
+            "x": 660,
+            "y": 3540
+          },
+          "label": "Click",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "5",
+              "timeoutType": "Fixed",
+              "timeoutFrom": "",
+              "timeoutTo": ""
+            },
+            "successNode": "fEhvD",
+            "failNode": null
+          },
+          "events": {},
+          "id": "cwOwb",
+          "position": {
+            "x": 660,
+            "y": 3650
+          },
+          "label": "Sleep 5s",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "class": ""
+        },
+        {
+          "type": "custom",
+          "data": {
+            "icon": "actionPause",
+            "action": "Pause",
+            "options": {
+              "disabled": false,
+              "nodeSleep": "0",
+              "nodeTimeout": "30",
+              "timeoutNextNode": "successNode",
+              "breakpoint": false,
+              "timeout": "0",
+              "timeoutType": "Random",
+              "timeoutFrom": "${DELAY_MIN}",
+              "timeoutTo": "${DELAY_MAX}"
             },
             "successNode": null,
             "failNode": null
           },
           "events": {},
-          "id": "9XvS0",
+          "id": "fEhvD",
           "position": {
             "x": 660,
-            "y": 1450
+            "y": 3760
           },
-          "label": "Run Script",
+          "label": "Sleep ${DELAY_MIN}-${DELAY_MAX}s",
           "sourcePosition": "right",
           "targetPosition": "left",
           "class": ""
@@ -457,20 +1083,20 @@
               "nodeTimeout": "30",
               "timeoutNextNode": "successNode",
               "loopType": "For",
-              "forFrom": "1",
-              "forTo": "${MAX_POSTS}",
+              "forFrom": "2",
+              "forTo": "${POST_COUNT}",
               "forEachFrom": "",
               "forEachValue": "",
               "whileLeftOperand": "",
               "whileOperator": null,
               "whileRightperand": ""
             },
-            "successNode": null,
+            "successNode": "PnyOy",
             "failNode": null,
-            "startLoopNode": "9XvS0"
+            "startLoopNode": "2P_br"
           },
           "events": {},
-          "id": "QgJaO",
+          "id": "NqQzA",
           "position": {
             "x": 1040,
             "y": 200
@@ -489,83 +1115,6 @@
             "border-radius": "50%"
           },
           "class": ""
-        },
-        {
-          "type": "custom",
-          "data": {
-            "icon": "actionScript",
-            "action": "Script",
-            "options": {
-              "disabled": false,
-              "nodeTimeout": "120",
-              "timeoutNextNode": "successNode",
-              "breakpoint": false,
-              "code": "\n// Post current RSS item\nconst itemIndex = (typeof loopIndex !== 'undefined') ? loopIndex - 1 : 0;\nconst items = globalThis.rssItems || [];\nif (itemIndex >= items.length) {\n    console.log('No more items');\n    return;\n}\nconst item = items[itemIndex];\nconsole.log('Posting: ' + item.title);\n\nawait page.goto('https://x.com/compose/post', { waitUntil: 'networkidle2' });\nawait new Promise(r => setTimeout(r, 2000));\n\nlet tweet = item.title + '\\n\\n' + item.link;\nif (tweet.length > 280) tweet = tweet.substring(0, 277) + '...';\n\nconst ta = await page.$('[data-testid=\"tweetTextarea_0\"]');\nif (ta) {\n    await ta.click();\n    await page.keyboard.type(tweet, { delay: 30 });\n    await new Promise(r => setTimeout(r, 2000));\n    const btn = await page.$('[data-testid=\"tweetButtonInline\"]');\n    if (btn) {\n        await btn.click();\n        console.log('Posted: ' + item.title);\n    }\n}\n"
-            },
-            "successNode": null,
-            "failNode": null
-          },
-          "events": {},
-          "id": "VkUuB",
-          "position": {
-            "x": 660,
-            "y": 1560
-          },
-          "label": "Run Script",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "class": ""
-        },
-        {
-          "type": "custom",
-          "data": {
-            "icon": "actionPause",
-            "action": "Pause",
-            "options": {
-              "disabled": false,
-              "nodeTimeout": "30",
-              "timeoutNextNode": "successNode",
-              "breakpoint": false,
-              "timeout": "300"
-            },
-            "successNode": null,
-            "failNode": null
-          },
-          "events": {},
-          "id": "lRK95",
-          "position": {
-            "x": 660,
-            "y": 1670
-          },
-          "label": "Sleep 300s",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "class": ""
-        },
-        {
-          "type": "custom",
-          "data": {
-            "icon": "actionEndLoop",
-            "action": "EndLoop",
-            "options": {
-              "disabled": false,
-              "nodeTimeout": "30",
-              "timeoutNextNode": "successNode",
-              "breakpoint": false
-            },
-            "successNode": null,
-            "failNode": null
-          },
-          "events": {},
-          "id": "K8lEE",
-          "position": {
-            "x": 660,
-            "y": 1780
-          },
-          "label": "End Loop",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "class": ""
         }
       ],
       "edges": [
@@ -574,7 +1123,7 @@
           "targetHandle": "successNode",
           "type": "custom",
           "source": "start_h5iGk",
-          "target": "7-eE4",
+          "target": "GYjYa",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -586,8 +1135,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-start_h5iGk target-7-eE4",
-          "id": "vueflow__edge-start_h5iGksuccessNode-7-eE4successNode",
+          "class": "source-start_h5iGk target-GYjYa",
+          "id": "vueflow__edge-start_h5iGksuccessNode-GYjYasuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -597,8 +1146,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "7-eE4",
-          "target": "f-FLO",
+          "source": "GYjYa",
+          "target": "hqn1k",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -610,8 +1159,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-7-eE4 target-f-FLO",
-          "id": "vueflow__edge-7-eE4successNode-f-FLOsuccessNode",
+          "class": "source-GYjYa target-hqn1k",
+          "id": "vueflow__edge-GYjYasuccessNode-hqn1ksuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -621,8 +1170,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "f-FLO",
-          "target": "hPg6l",
+          "source": "hqn1k",
+          "target": "iDxYr",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -634,8 +1183,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-f-FLO target-hPg6l",
-          "id": "vueflow__edge-f-FLOsuccessNode-hPg6lsuccessNode",
+          "class": "source-hqn1k target-iDxYr",
+          "id": "vueflow__edge-hqn1ksuccessNode-iDxYrsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -645,8 +1194,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "hPg6l",
-          "target": "hKlwV",
+          "source": "iDxYr",
+          "target": "BsNM7",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -658,8 +1207,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-hPg6l target-hKlwV",
-          "id": "vueflow__edge-hPg6lsuccessNode-hKlwVsuccessNode",
+          "class": "source-iDxYr target-BsNM7",
+          "id": "vueflow__edge-iDxYrsuccessNode-BsNM7successNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -669,8 +1218,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "hKlwV",
-          "target": "rWfTp",
+          "source": "BsNM7",
+          "target": "_jMDO",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -682,8 +1231,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-hKlwV target-rWfTp",
-          "id": "vueflow__edge-hKlwVsuccessNode-rWfTpsuccessNode",
+          "class": "source-BsNM7 target-_jMDO",
+          "id": "vueflow__edge-BsNM7successNode-_jMDOsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -693,8 +1242,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "rWfTp",
-          "target": "gT3aE",
+          "source": "_jMDO",
+          "target": "7tQqf",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -706,8 +1255,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-rWfTp target-gT3aE",
-          "id": "vueflow__edge-rWfTpsuccessNode-gT3aEsuccessNode",
+          "class": "source-_jMDO target-7tQqf",
+          "id": "vueflow__edge-_jMDOsuccessNode-7tQqfsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -717,8 +1266,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "gT3aE",
-          "target": "c5mLn",
+          "source": "7tQqf",
+          "target": "v50mb",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -730,8 +1279,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-gT3aE target-c5mLn",
-          "id": "vueflow__edge-gT3aEsuccessNode-c5mLnsuccessNode",
+          "class": "source-7tQqf target-v50mb",
+          "id": "vueflow__edge-7tQqfsuccessNode-v50mbsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -741,8 +1290,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "c5mLn",
-          "target": "_JNqg",
+          "source": "v50mb",
+          "target": "ouWHX",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -754,8 +1303,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-c5mLn target-_JNqg",
-          "id": "vueflow__edge-c5mLnsuccessNode-_JNqgsuccessNode",
+          "class": "source-v50mb target-ouWHX",
+          "id": "vueflow__edge-v50mbsuccessNode-ouWHXsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -765,8 +1314,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "_JNqg",
-          "target": "MZ4Lt",
+          "source": "ouWHX",
+          "target": "QlxrA",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -778,8 +1327,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-_JNqg target-MZ4Lt",
-          "id": "vueflow__edge-_JNqgsuccessNode-MZ4LtsuccessNode",
+          "class": "source-ouWHX target-QlxrA",
+          "id": "vueflow__edge-ouWHXsuccessNode-QlxrAsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -789,8 +1338,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "MZ4Lt",
-          "target": "2NsJt",
+          "source": "QlxrA",
+          "target": "k4y-D",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -802,8 +1351,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-MZ4Lt target-2NsJt",
-          "id": "vueflow__edge-MZ4LtsuccessNode-2NsJtsuccessNode",
+          "class": "source-QlxrA target-k4y-D",
+          "id": "vueflow__edge-QlxrAsuccessNode-k4y-DsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -813,8 +1362,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "2NsJt",
-          "target": "9XvS0",
+          "source": "k4y-D",
+          "target": "7CDB4",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -826,8 +1375,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-2NsJt target-9XvS0",
-          "id": "vueflow__edge-2NsJtsuccessNode-9XvS0successNode",
+          "class": "source-k4y-D target-7CDB4",
+          "id": "vueflow__edge-k4y-DsuccessNode-7CDB4successNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -837,8 +1386,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "9XvS0",
-          "target": "QgJaO",
+          "source": "7CDB4",
+          "target": "vm8SB",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -850,8 +1399,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-9XvS0 target-QgJaO",
-          "id": "vueflow__edge-9XvS0successNode-QgJaOsuccessNode",
+          "class": "source-7CDB4 target-vm8SB",
+          "id": "vueflow__edge-7CDB4successNode-vm8SBsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -861,8 +1410,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "QgJaO",
-          "target": "VkUuB",
+          "source": "vm8SB",
+          "target": "nd-nh",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -874,8 +1423,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-QgJaO target-VkUuB",
-          "id": "vueflow__edge-QgJaOsuccessNode-VkUuBsuccessNode",
+          "class": "source-vm8SB target-nd-nh",
+          "id": "vueflow__edge-vm8SBsuccessNode-nd-nhsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -885,8 +1434,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "VkUuB",
-          "target": "lRK95",
+          "source": "nd-nh",
+          "target": "SjVgB",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -898,8 +1447,8 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-VkUuB target-lRK95",
-          "id": "vueflow__edge-VkUuBsuccessNode-lRK95successNode",
+          "class": "source-nd-nh target-SjVgB",
+          "id": "vueflow__edge-nd-nhsuccessNode-SjVgBsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -909,8 +1458,8 @@
           "sourceHandle": "successNode",
           "targetHandle": "successNode",
           "type": "custom",
-          "source": "lRK95",
-          "target": "K8lEE",
+          "source": "SjVgB",
+          "target": "fhnfo",
           "updatable": true,
           "data": {
             "sourceHandle": "successNode",
@@ -922,8 +1471,440 @@
             "stroke": "#62fcaf",
             "strokeWidth": 2
           },
-          "class": "source-lRK95 target-K8lEE",
-          "id": "vueflow__edge-lRK95successNode-K8lEEsuccessNode",
+          "class": "source-SjVgB target-fhnfo",
+          "id": "vueflow__edge-SjVgBsuccessNode-fhnfosuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "fhnfo",
+          "target": "NYToP",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-fhnfo target-NYToP",
+          "id": "vueflow__edge-fhnfosuccessNode-NYToPsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "NYToP",
+          "target": "AIN7j",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-NYToP target-AIN7j",
+          "id": "vueflow__edge-NYToPsuccessNode-AIN7jsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "AIN7j",
+          "target": "lc_BF",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-AIN7j target-lc_BF",
+          "id": "vueflow__edge-AIN7jsuccessNode-lc_BFsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "lc_BF",
+          "target": "h6tde",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-lc_BF target-h6tde",
+          "id": "vueflow__edge-lc_BFsuccessNode-h6tdesuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "h6tde",
+          "target": "IHmGh",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-h6tde target-IHmGh",
+          "id": "vueflow__edge-h6tdesuccessNode-IHmGhsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "IHmGh",
+          "target": "S0-Ne",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-IHmGh target-S0-Ne",
+          "id": "vueflow__edge-IHmGhsuccessNode-S0-NesuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "S0-Ne",
+          "target": "Y9ZCH",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-S0-Ne target-Y9ZCH",
+          "id": "vueflow__edge-S0-NesuccessNode-Y9ZCHsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "Y9ZCH",
+          "target": "GhLSo",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-Y9ZCH target-GhLSo",
+          "id": "vueflow__edge-Y9ZCHsuccessNode-GhLSosuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "GhLSo",
+          "target": "256-E",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-GhLSo target-256-E",
+          "id": "vueflow__edge-GhLSosuccessNode-256-EsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "256-E",
+          "target": "2P_br",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-256-E target-2P_br",
+          "id": "vueflow__edge-256-EsuccessNode-2P_brsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "2P_br",
+          "target": "NqQzA",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-2P_br target-NqQzA",
+          "id": "vueflow__edge-2P_brsuccessNode-NqQzAsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "NqQzA",
+          "target": "PnyOy",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-NqQzA target-PnyOy",
+          "id": "vueflow__edge-NqQzAsuccessNode-PnyOysuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "PnyOy",
+          "target": "WCNDr",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-PnyOy target-WCNDr",
+          "id": "vueflow__edge-PnyOysuccessNode-WCNDrsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "WCNDr",
+          "target": "HHHRG",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-WCNDr target-HHHRG",
+          "id": "vueflow__edge-WCNDrsuccessNode-HHHRGsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "HHHRG",
+          "target": "uFsQL",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-HHHRG target-uFsQL",
+          "id": "vueflow__edge-HHHRGsuccessNode-uFsQLsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "uFsQL",
+          "target": "rcOwv",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-uFsQL target-rcOwv",
+          "id": "vueflow__edge-uFsQLsuccessNode-rcOwvsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "rcOwv",
+          "target": "cwOwb",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-rcOwv target-cwOwb",
+          "id": "vueflow__edge-rcOwvsuccessNode-cwOwbsuccessNode",
+          "sourceX": 0,
+          "sourceY": 0,
+          "targetX": 0,
+          "targetY": 0
+        },
+        {
+          "sourceHandle": "successNode",
+          "targetHandle": "successNode",
+          "type": "custom",
+          "source": "cwOwb",
+          "target": "fEhvD",
+          "updatable": true,
+          "data": {
+            "sourceHandle": "successNode",
+            "targetHandle": "successNode"
+          },
+          "events": {},
+          "animated": true,
+          "style": {
+            "stroke": "#62fcaf",
+            "strokeWidth": 2
+          },
+          "class": "source-cwOwb target-fEhvD",
+          "id": "vueflow__edge-cwOwbsuccessNode-fEhvDsuccessNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -931,13 +1912,13 @@
         },
         {
           "sourceHandle": "endLoopNode",
-          "targetHandle": "successNode",
+          "targetHandle": "startLoopNode",
           "type": "custom",
-          "source": "K8lEE",
-          "target": "9XvS0",
+          "source": "fEhvD",
+          "target": "2P_br",
           "updatable": true,
           "data": {
-            "sourceHandle": "successNode",
+            "sourceHandle": "endLoopNode",
             "targetHandle": "successNode"
           },
           "events": {},
@@ -946,8 +1927,8 @@
             "stroke": "#f0a020",
             "strokeWidth": 2
           },
-          "class": "source-K8lEE target-9XvS0",
-          "id": "vueflow__edge-K8lEEendLoopNode-9XvS0successNode",
+          "class": "source-fEhvD target-2P_br",
+          "id": "vueflow__edge-fEhvDendLoopNode-2P_brstartLoopNode",
           "sourceX": 0,
           "sourceY": 0,
           "targetX": 0,
@@ -957,9 +1938,9 @@
     },
     "variables": [
       {
-        "id": "vXusr",
+        "id": "vUser",
         "name": "X_USERNAME",
-        "label": "X Username",
+        "label": "X Username/Email",
         "value": "your@email.com",
         "secret": false
       },
@@ -971,17 +1952,31 @@
         "secret": true
       },
       {
-        "id": "vRSS",
-        "name": "RSS_FEED",
-        "label": "RSS Feed URL",
-        "value": "https://your-rss-feed.com/rss",
+        "id": "vTweet",
+        "name": "TWEET_TEXT",
+        "label": "Tweet content",
+        "value": "Hello from GenLogin! #automation",
         "secret": false
       },
       {
         "id": "vCnt",
-        "name": "MAX_POSTS",
-        "label": "Max posts to publish",
-        "value": "10",
+        "name": "POST_COUNT",
+        "label": "Number of posts",
+        "value": "3",
+        "secret": false
+      },
+      {
+        "id": "vWait",
+        "name": "DELAY_MIN",
+        "label": "Delay between posts (seconds, from)",
+        "value": "300",
+        "secret": false
+      },
+      {
+        "id": "vWait2",
+        "name": "DELAY_MAX",
+        "label": "Delay between posts (seconds, to)",
+        "value": "900",
         "secret": false
       }
     ]
@@ -999,7 +1994,7 @@
   "contextMenu": [],
   "enableContextMenu": false,
   "enableInput": true,
-  "createdAt": "2026-04-13T07:54:09.000Z",
-  "updatedAt": "2026-04-13T07:54:09.000Z",
+  "createdAt": "2026-04-13T08:47:44.000Z",
+  "updatedAt": "2026-04-13T08:47:44.000Z",
   "expiredAt": null
 }
