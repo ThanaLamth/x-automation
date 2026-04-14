@@ -223,41 +223,49 @@ async function scrapeGainersLosers() {
     log('>', `Fetching gainers/losers: ${url}`);
 
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
-    await sleep(4000);
+    await sleep(5000);
 
-    return await page.evaluate(() => {
-        const gainers = [];
-        const losers = [];
-        const rows = document.querySelectorAll('table tbody tr, [class*="TableRow"]');
+    // Extract raw body text
+    const bodyText = await page.evaluate(() => document.body.innerText);
 
-        rows.forEach((row) => {
-            const cells = row.querySelectorAll('td, [role="cell"]');
-            if (cells.length < 5) return;
+    // Parse in Node.js
+    const gainers = [];
+    const losers = [];
 
-            const nameEl = cells[2]?.querySelector('a p') || cells[2]?.querySelector('a');
-            const changeEl = cells[4]?.querySelector('span') || cells[4];
+    const topGainersIdx = bodyText.search(/Top Gainers/i);
+    const topLosersIdx = bodyText.search(/Top Losers/i);
+    const endIdx = bodyText.search(/Categories|Leaderboards/i);
 
-            if (nameEl && changeEl) {
-                const changeText = changeEl.textContent.trim();
-                const change = parseFloat(changeText.replace(/[^0-9.-]/g, ''));
+    if (topGainersIdx === -1 || topLosersIdx === -1) return { gainers, losers };
 
-                const coin = {
-                    name: nameEl.textContent.trim(),
-                    change24h: changeText
-                };
+    const gainersSection = bodyText.substring(topGainersIdx, topLosersIdx);
+    const losersSection = bodyText.substring(topLosersIdx, endIdx !== -1 ? endIdx : bodyText.length);
 
-                if (!isNaN(change)) {
-                    if (change > 0) gainers.push(coin);
-                    else losers.push(coin);
-                }
-            }
-        });
+    function parseCoins(text) {
+        const coins = [];
+        // Look for patterns like: rank  name  SYMBOL  $price  change%  $volume
+        const re = /(\d+)\s{2,}([A-Za-z0-9 .()\-]+)\s{2,}([A-Z]{2,10})\s{2,}\$?([\d,.]+)\s{1,}([+-]?[\d.]+%)\s{1,}\$?([\d,.]+)/g;
+        let m;
+        while ((m = re.exec(text)) !== null) {
+            coins.push({
+                rank: m[1],
+                name: m[2].trim(),
+                symbol: m[3],
+                price: `$${m[4]}`,
+                change24h: m[5],
+                volume: `$${m[6]}`
+            });
+        }
+        return coins;
+    }
 
-        return {
-            gainers: gainers.slice(0, 15).sort((a, b) => parseFloat(b.change24h) - parseFloat(a.change24h)),
-            losers: losers.slice(0, 15).sort((a, b) => parseFloat(a.change24h) - parseFloat(b.change24h))
-        };
-    });
+    const g = parseCoins(gainersSection);
+    gainers.push(...g.sort((a, b) => parseFloat(b.change24h) - parseFloat(a.change24h)).slice(0, 15));
+
+    const l = parseCoins(losersSection);
+    losers.push(...l.sort((a, b) => parseFloat(a.change24h) - parseFloat(b.change24h)).slice(0, 15));
+
+    return { gainers, losers };
 }
 
 async function scrapeNews() {
